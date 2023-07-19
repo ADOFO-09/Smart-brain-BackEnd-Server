@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
+// Middleware 
 app.use(bodyParser.json());
 const database = {
     users : [
@@ -28,7 +29,7 @@ const database = {
 app.get('/', (req, res) => {
     res.send(database.users);
 })
-
+// Making signin post request to database
 app.post('/signin', (req, res) => {
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password){
         res.json('success')
@@ -37,6 +38,7 @@ app.post('/signin', (req, res) => {
     }
 })
 
+// Making register post request to database
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
     database.users.push({
