@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const bcrypt = require('bcrypt-nodejs');
 
 const app = express();
 // Middleware 
@@ -22,6 +23,13 @@ const database = {
         entries: 0,
         joined: new Date()
     }
+],
+login: [
+    {
+        id: '987',
+        hash: '',
+        email: 'john@example.com'
+    }
 ]
 }
 
@@ -41,6 +49,9 @@ app.post('/signin', (req, res) => {
 // Making register post request to database
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
+    bcrypt.hash(password,null,null, function(err,hash){
+        console.log(hash)
+    });
     database.users.push({
         id: '125',
         name: name,
