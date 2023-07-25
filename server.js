@@ -37,6 +37,13 @@ app.get('/', (req, res) => {
 })
 // Making signin post request to database
 app.post('/signin', (req, res) => {
+    // bcrypt.compare("apples","$2a$10$tAYTqahib4MT6psiBt1DuO2KfagfQ9fmuDzbSZn1vtiNFKOkCSjTq", function(err,res){
+    //     console.log("first guess", res)
+    // });
+    // bcrypt.compare("vergies","$2a$10$tAYTqahib4MT6psiBt1DuO2KfagfQ9fmuDzbSZn1vtiNFKOkCSjTq", function(err,res){
+    //     console.log("second guess", res)
+    // });
+    
     if (req.body.email === database.users[0].email && req.body.password === database.users[0].password){
         res.json('success')
     } else {
