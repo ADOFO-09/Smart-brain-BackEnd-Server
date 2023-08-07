@@ -86,7 +86,7 @@ app.get('/profile/:id', (req, res)=> {
     }
 })
 
-// Making a post request for number of entries
+// Making a put request for number of entries
 app.put('/image',(req, res) => {
     const {id} = req.body;
     let found = false;
