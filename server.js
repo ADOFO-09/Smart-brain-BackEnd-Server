@@ -2,6 +2,20 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+const knex = require('knex');
+
+const postgress = knex({
+    client: 'pg',
+    connection: {
+    host : '127.0.0.1',
+    port : 3000,
+    user : 'postgres',
+    password : '',
+    database : 'smart-brain'
+  }
+});
+
+console.log(postgress.select('*').from('users'));
 
 const app = express();
 // Middleware 
