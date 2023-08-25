@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
 const knex = require('knex');
 
-const postgress = knex({
+const db = knex({
     client: 'pg',
     connection: {
     host : '127.0.0.1',
@@ -15,7 +15,7 @@ const postgress = knex({
   }
 });
 
-console.log(postgress.select('*').from('users'));
+
 
 const app = express();
 // Middleware 
