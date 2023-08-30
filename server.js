@@ -8,13 +8,15 @@ const db = knex({
     client: 'pg',
     connection: {
     host : '127.0.0.1',
-    port : 3000,
     user : 'postgres',
-    password : '',
+    password : 'test',
     database : 'smart-brain'
   }
 });
 
+db.select('*').from('users').then(data => {
+    console.log(data);
+})
 
 
 const app = express();
@@ -72,9 +74,9 @@ app.post('/signin', (req, res) => {
 // Making register post request to database
 app.post('/register', (req, res) => {
     const {name, email, password} = req.body;
-    bcrypt.hash(password,null,null, function(err,hash){
-        console.log(hash)
-    });
+    // bcrypt.hash(password,null,null, function(err,hash){
+    //     console.log(hash)
+    // });
     database.users.push({
         id: '125',
         name: name,
