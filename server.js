@@ -14,9 +14,7 @@ const db = knex({
   }
 });
 
-db.select('*').from('users').then(data => {
-    console.log(data);
-})
+
 
 
 const app = express();
@@ -77,14 +75,17 @@ app.post('/register', (req, res) => {
     // bcrypt.hash(password,null,null, function(err,hash){
     //     console.log(hash)
     // });
-    database.users.push({
-        id: '125',
-        name: name,
+    db('users')
+    .returning('*')
+    .insert({
         email: email,
-        entries: 0,
+        name: name,
         joined: new Date()
     })
-    res.json(database.users[database.users.length-1])
+    .then(users => {
+        res.json(users[0])
+    })
+    .catch(err => res.status(400).json("unable to resgister"))
 })
 
 // Making a get request using user id
