@@ -22,7 +22,7 @@ app.use(cors());
 
 
 app.get('/', (req, res) => {
-    res.send(database.users);
+    res.send('success');
 })
 // Making signin post request to database
 app.post('/signin', (req, res) => {
