@@ -3,7 +3,7 @@ const app = express();
 
 app.use(express.json()); // Body parsing middleware
 
-const handleProfileGet = (req,res, db)=> {
+const handleProfileGet = (req,res, db) => {
     const {id} = req.params;
     db.select('*').from('users').where({id})
         .then(user => {
@@ -19,5 +19,5 @@ const handleProfileGet = (req,res, db)=> {
 }
 
 module.exports = {
-    handleProfileGet
+    handleProfileGet: handleProfileGet
 }
