@@ -5,6 +5,9 @@ app.use(express.json()); // Body parsing middleware
 
 const handleRegister = (req,res, bcrypt, db) => {
     const {email,name, password} = req.body;
+    if(!email || !name || !password){
+        return res.status(400).json("incorrect forms submission")
+    }
     const hash = bcrypt.hashSync(password);
     db.transaction(trx => {
         trx.insert({
