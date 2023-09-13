@@ -5,6 +5,7 @@ app.use(express.json()); // Body parsing middleware
 
 const handleRegister = (req,res, bcrypt, db) => {
     const {email,name, password} = req.body;
+    // User input validation
     if(!email || !name || !password){
         return res.status(400).json("incorrect forms submission")
     }
