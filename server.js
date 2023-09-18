@@ -3,7 +3,6 @@ const bodyParser = require ("body-parser");
 const bcrypt = require("bcrypt-nodejs");
 const cors = require("cors");
 const knex = require("knex");
-const axios = require("axios");
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -27,9 +26,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 
-app.get('/', (req, res) => {
-    res.send('success');
-})
+app.get('/', (req, res) => {  res.send(database.users)})
 // Making signin post request to database
 app.post('/signin', (req, res) => {signin.handleSignin(req, res, bcrypt, db)})
 // Making register post request to database
