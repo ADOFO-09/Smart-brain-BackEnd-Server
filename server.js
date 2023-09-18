@@ -1,8 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
-const bcrypt = require('bcrypt-nodejs');
-const cors = require('cors');
-const knex = require('knex');
+const bodyParser = require ("body-parser");
+const bcrypt = require("bcrypt-nodejs");
+const cors = require("cors");
+const knex = require("knex");
+const axios = require("axios");
 
 const register = require('./controllers/register');
 const signin = require('./controllers/signin');
@@ -37,6 +38,8 @@ app.post('/register', (req,res) => {register.handleRegister(req, res, bcrypt, db
 app.get('/profile/:id', (req, res) => {profile.handleProfileGet(req, res, db)})
 // Making a put request for number of entries
 app.put('/image',(req, res) => {image.handleImage(req, res, db)})
+// Making a post request for api calls
+app.post('/imageurl',(req, res) => {image.handleApiCall(req, res)})
 
 app.listen(3000, () => {
     console.log('app is running on port 3000');
