@@ -1,4 +1,4 @@
-const Clarifai = require('clarifai');
+const clarifai = require('clarifai');
 const express = require('express');
 const app = express();
 const axios = require('axios');
@@ -68,7 +68,7 @@ const handleApiCall = (req, res) => {
                 "/versions/" +
                 MODEL_VERSION_ID +
                 "/outputs",
-                requestOptions
+                requestOptions 
             )
             .then(data => {
                 res.json(data)
